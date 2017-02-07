@@ -4,8 +4,10 @@
 
 <%= yield %>
 
-<br></br>
 <% if !logged_in? %>
+  <br></br>
+  <a href='/login'>Log In</a>
+  <br></br>
   <a href='/signup'>Sign Up</a>
 <% end %>
 
