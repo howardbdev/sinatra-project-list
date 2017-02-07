@@ -1,0 +1,17 @@
+<h1>Welcome to Project List!</h1>
+<h2>Your app to manage projects!</h2>
+
+
+<%= yield %>
+
+<br></br>
+<% if !logged_in? %>
+  <a href='/signup'>Sign Up</a>
+<% end %>
+
+
+<% if logged_in? %>
+  <form action='/logout' method='post'>
+    <input type='submit' value='Sign Out'>
+  </form>
+<% end %>
