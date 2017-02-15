@@ -19,6 +19,7 @@ class ApplicationController < Sinatra::Base
       user = User.find_by(username: username)
       if user && user.authenticate(password)
         session[:user_id] = user.id
+        load_projects
         erb :'/projects/projects'
       else
         redirect '/login'
@@ -31,6 +32,10 @@ class ApplicationController < Sinatra::Base
 
     def logged_in?
       !!current_user
+    end
+
+    def load_projects
+      @projects = Project.all
     end
 
     def logout

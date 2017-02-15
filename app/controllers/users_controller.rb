@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   post '/signup' do
     if !params[:username].empty? && !params[:password].empty? && User.create(username: params[:username], password: params[:password])
       session[:user_id] = User.last.id
+      load_projects
       erb :'/projects/projects'
     else
       redirect '/signup'
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
 
   get '/login' do
     if logged_in?
+      load_projects
       erb :'/projects/projects'
     else
       erb :'/users/login'

@@ -1,5 +1,9 @@
 views/projects/projects.erb
 
 <% if logged_in? %>
+  <% @projects.each do |project| %>
+    <h3><%=project.name%></h3>
+  <% end %>
 <% else %>
+  <h3>You must be logged in to view projects</h3>
 <% end %>
