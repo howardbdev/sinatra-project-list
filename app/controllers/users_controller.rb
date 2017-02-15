@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   get '/login' do
     if logged_in?
-      redirect '/projects'
+      erb :'/projects/projects'
     else
       erb :'/users/login'
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     login(params[:username], params[:password])
   end
 
-  post '/logout' do
+  get '/logout' do
     logout
   end
 end
