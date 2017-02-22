@@ -1,1 +1,34 @@
 views/projects/create_projects.erb
+
+<h2>Create a New Project</h2>
+
+<form method='post' action='/projects'>
+
+  <label>Name: </label>
+  <input type='text' name='name'>
+  <br></br>
+  <label>Location: </label>
+  <input type='text' name='location'>
+  <br></br>
+  <label>Description: </label>
+  <input type='textbox' name='description'>
+  <br></br>
+  <label>Status; </label>
+  <input type='text' name='status'>
+  <br></br>
+  <label>Notes: </label>
+  <input type='text' name='notes'>
+  <br></br>
+  <label>Tools: </label>
+  <input type='text' name='tools'>
+  <br></br>
+  <label>Materials: </label>
+  <input type='text' name='materials'>
+  <br></br>
+  <label>Priority: </label>
+  <input type='text' name='priority'>
+  <br></br>
+
+  <input type="submit" value="Create Project">
+
+</form>
