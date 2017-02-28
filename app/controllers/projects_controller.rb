@@ -4,10 +4,10 @@ class ProjectsController < ApplicationController
     erb :'/projects/create_project'
   end
 
-  get '/projects/projects' do
+  get '/projects' do
     if logged_in?
       load_projects
-      erb :'projects/projects'
+      erb :'/projects/projects'
     else
       redirect '/login'
     end
@@ -32,12 +32,24 @@ class ProjectsController < ApplicationController
     end
   end
 
+  get '/projects/:id' do
+    redirect '/login' unless logged_in?
+    @project = Project.find_by_id(params[:id])
+    if @project
+      erb :'/projects/show_project'
+    else
+      redirect '/projects'
+    end
+  end
+
   get '/projects/:id/edit' do
-    @project = Project.find_by_id(:id)
-    if @project.user_id == current_user.id
+    redirect '/login' unless logged_in?
+    @project = current_user.projects.find_by_id(:id)
+    if @project
+      erb :'/projects/edit_project'
     else
       @message = "You do not have permission to edit this project."
-      erb :'/projects/projects'
+      redirect '/projects'
     end
   end
 end
