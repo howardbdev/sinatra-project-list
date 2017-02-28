@@ -31,4 +31,13 @@ class ProjectsController < ApplicationController
       redirect '/projects/new'
     end
   end
+
+  get '/projects/:id/edit' do
+    @project = Project.find_by_id(:id)
+    if @project.user_id == current_user.id
+    else
+      @message = "You do not have permission to edit this project."
+      erb :'/projects/projects'
+    end
+  end
 end

@@ -1,6 +1,9 @@
 <h1>Welcome to Project List!</h1>
 <h2>Your app to manage projects!</h2>
 
+<% if @message %>
+  <h3><%= @message %></h3>
+<% end %>
 
 <%= yield %>
 
