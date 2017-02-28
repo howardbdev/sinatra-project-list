@@ -45,23 +45,24 @@ class ProjectsController < ApplicationController
 
   get '/projects/:id/edit' do
     redirect '/login' unless logged_in?
-    @project = current_user.projects.find_by_id(:id)
+    @project = current_user.projects.find_by_id(params[:id])
     if @project
       erb :'/projects/edit_project'
     else
-      @message = "PROJECT NOT EDITED. You do not have permission to edit that project."
+      @message = "You do not have permission to edit that project."
       load_projects
       erb :'/projects/projects'
     end
   end
 
   delete '/projects/:id/delete' do
-    @project = current_user.projects.find_by_id(:id)
+    @project = current_user.projects.find_by_id(params[:id])
     if @project && @project.user_id == current_user.id
       @project.delete
       redirect '/projects'
     else
       @message = "PROJECT NOT DELETED.  You do not have permission to delete that project."
+      load_projects
       erb :'projects/projects'
     end
   end
