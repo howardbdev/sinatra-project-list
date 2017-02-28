@@ -7,7 +7,9 @@ views/projects/projects.erb
   <% end %>
 
   <br></br>
-  <a href='/projects/new'>Create Project</a>
+  <form action='/projects/new' method='get'>
+    <input type='submit' value='Create Project'>
+  </form>
 <% else %>
   <h3>You must be logged in to view projects</h3>
 <% end %>

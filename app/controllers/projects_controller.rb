@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
     if @project.save
       erb :'/projects/show_project'
     else
-      @message = "Project not edited.  All projects mush have a name, location, and description."
+      @message = "Project not edited.  All projects must have a name, location, and description."
       load_projects
       erb :'/projects/projects'
     end
