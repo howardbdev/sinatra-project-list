@@ -28,7 +28,8 @@ class ProjectsController < ApplicationController
       load_projects
       erb :'/projects/show_project'
     else
-      redirect '/projects/new'
+      @message = "Something went wrong.  Project not saved. All projects must include a name, location, and description."
+      erb :'/projects/create_project'
     end
   end
 
@@ -48,8 +49,20 @@ class ProjectsController < ApplicationController
     if @project
       erb :'/projects/edit_project'
     else
-      @message = "You do not have permission to edit this project."
+      @message = "PROJECT NOT EDITED. You do not have permission to edit that project."
+      load_projects
+      erb :'/projects/projects'
+    end
+  end
+
+  delete '/projects/:id/delete' do
+    @project = current_user.projects.find_by_id(:id)
+    if @project && @project.user_id == current_user.id
+      @project.delete
       redirect '/projects'
+    else
+      @message = "PROJECT NOT DELETED.  You do not have permission to delete that project."
+      erb :'projects/projects'
     end
   end
 end
