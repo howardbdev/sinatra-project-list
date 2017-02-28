@@ -1,1 +1,39 @@
 views/projects/edit_project.erb
+
+<h2>Edit a Project</h2>
+
+<form method='post' action='/projects/<%= @project.id %>/edit'>
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+  <label>Name: </label>
+  <input type='text' name='name' value="<%= @project.name %>">
+  <br></br>
+  <label>Location: </label>
+  <input type='text' name='location' value="<%= @project.location %>">
+  <br></br>
+  <label>Description: </label>
+  <input type='textbox' name='description' value="<%= @project.description %>">
+  <br></br>
+  <label>Status: </label>
+  <input type='text' name='status' value="<%= @project.status %>">
+  <br></br>
+  <label>Notes: </label>
+  <input type='text' name='notes' value="<%= @project.notes %>">
+  <br></br>
+  <label>Tools: </label>
+  <input type='text' name='tools' value="<%= @project.tools %>">
+  <br></br>
+  <label>Materials: </label>
+  <input type='text' name='materials' value="<%= @project.materials %>">
+  <br></br>
+  <label>Priority: </label>
+  <input type='text' name='priority' value="<%= @project.priority %>">
+  <br></br>
+
+  <input type="submit" value="Edit Project">
+
+</form>
+
+<form method='get' action='/projects'>
+  <input type="submit" value="Cancel">
+</form>

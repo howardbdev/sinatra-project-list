@@ -55,6 +55,33 @@ class ProjectsController < ApplicationController
     end
   end
 
+  patch '/projects/:id/edit' do
+    redirect '/login' unless logged_in?
+    @project = current_user.projects.find_by_id(params[:id])
+    if @project && @project.user_id == current_user.id
+      @project.name = params[:name]
+      @project.location = params[:location]
+      @project.description = params[:description]
+      @project.status = params[:status]
+      @project.notes = params[:notes]
+      @project.tools = params[:tools]
+      @project.materials = params[:materials]
+      @project.priority = params[:priority]
+    else
+      @message = "Project not edited.  Seems like a permission error."
+      load_projects
+      erb :'/projects/projects'
+    end
+
+    if @project.save
+      erb :'/projects/show_project'
+    else
+      @message = "Project not edited.  All projects mush have a name, location, and description."
+      load_projects
+      erb :'/projects/projects'
+    end
+  end
+
   delete '/projects/:id/delete' do
     @project = current_user.projects.find_by_id(params[:id])
     if @project && @project.user_id == current_user.id
