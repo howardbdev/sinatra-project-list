@@ -1,6 +1,13 @@
 views/projects/show_project.erb
 
 <h1><%= @project.name %><h1>
+<h2>Location: <%= @project.location %></h2>
+<h2>Description: <%= @project.description %></h2>
+<h2>Status: <%= @project.status %></h2>
+<h2>Notes: <%= @project.notes %></h2>
+<h2>Tools: <%= @project.tools %></h2>
+<h2>Materials: <%= @project.materials %></h2>
+<h2>Priority: <%= @project.priority %></h2>
 
   <form method="get" action='/projects/<%=@project.id%>/edit'>
     <label>Edit Project: </label>

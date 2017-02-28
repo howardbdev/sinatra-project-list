@@ -2,10 +2,13 @@ views/projects/projects.erb
 
 <% if logged_in? %>
   <% @projects.each do |project| %>
-    <h3><%=project.name%></h3>
+    <br></br>
+    <a href='/projects/<%=project.id%>'><%= project.name %></a>
   <% end %>
 
+  <br></br>
   <a href='/projects/new'>Create Project</a>
 <% else %>
   <h3>You must be logged in to view projects</h3>
 <% end %>
+<br></br>
