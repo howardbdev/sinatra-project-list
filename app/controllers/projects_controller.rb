@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
     erb :'/projects/create_project'
   end
 
-  get '/projects' do
+  get '/projects/projects' do
     if logged_in?
       load_projects
       erb :'projects/projects'
@@ -24,8 +24,11 @@ class ProjectsController < ApplicationController
     project.status = params[:tools] if !params[:tools].empty?
     project.status = params[:materials] if !params[:materials].empty?
     project.status = params[:priority] if !params[:priority].empty?
-    project.save
-    load_projects
-    redirect '/projects/projects'
+    if project.save
+      load_projects
+      redirect '/projects/projects'
+    else
+      redirect '/projects/new'
+    end
   end
 end
