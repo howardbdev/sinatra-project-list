@@ -10,12 +10,13 @@ views/projects/show_project.erb
 <h2>Priority: <%= @project.priority %></h2>
 
   <form method="get" action='/projects/<%=@project.id%>/edit'>
-    <label>Edit Project: </label>
     <input type="submit" name="edit" id="edit" value="Edit Project">
   </form>
 
   <form method="post" action='/projects/<%=@project.id%>/delete'>
     <input id="hidden" type="hidden" name="_method" value="delete">
-    <label>Delete Project: </label>
     <input type="submit" name="delete" id="delete" value="Delete Project">
   </form>
+
+  <a href='/projects'>Back to Project List</a>
+  <br></br>
