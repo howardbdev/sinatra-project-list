@@ -1,8 +1,9 @@
 
 <% if logged_in? %>
+  <p>You can edit or delete only your own projects.</p>
   <% @projects.each do |project| %>
     <br></br>
-    <a href='/projects/<%=project.id%>'><%= project.name %></a>
+    <a href='/projects/<%=project.id%>'><%= project.name %><%= "  (*your project)" if project.user_id == current_user.id %></a>
   <% end %>
 
   <br></br>
