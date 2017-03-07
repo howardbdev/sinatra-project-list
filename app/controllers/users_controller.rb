@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if !params[:username].empty? && !params[:password].empty? && User.create(username: params[:username], password: params[:password])
+    u = User.create(username: params[:username], password: params[:password])
+    if !params[:username].empty? && !params[:password].empty? && !!u.id
       session[:user_id] = User.last.id
       load_projects
       erb :'/projects/projects'
