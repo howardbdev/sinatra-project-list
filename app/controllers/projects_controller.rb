@@ -1,7 +1,11 @@
 class ProjectsController < ApplicationController
 
   get '/projects/new' do
-    erb :'/projects/create_project'
+    if logged_in?
+      erb :'/projects/create_project'
+    else
+      redirect '/login'
+    end
   end
 
   get '/projects' do
