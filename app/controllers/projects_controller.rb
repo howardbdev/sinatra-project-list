@@ -18,16 +18,8 @@ class ProjectsController < ApplicationController
   end
 
   post '/projects' do
-    @project = Project.new
-    @project.user_id = session[:user_id]
-    @project.name = params[:name]
-    @project.location = params[:location]
-    @project.description = params[:description]
-    @project.status = params[:status]
-    @project.notes = params[:notes]
-    @project.tools = params[:tools]
-    @project.materials = params[:materials]
-    @project.priority = params[:priority]
+    @project = current_user.projects.build(name: params[:name], location: params[:location], description: params[:description], status: params[:status], notes: params[:notes], tools: params[:tools], materials: params[:materials], priority: params[:priority])
+
     if @project.save
       load_projects
       erb :'/projects/show_project'

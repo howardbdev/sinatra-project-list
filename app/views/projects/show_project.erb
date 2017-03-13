@@ -1,5 +1,7 @@
 
 <h1><%= @project.name %><h1>
+  <h1><%= @project.user.username unless @project.user_id == current_user.id %><h1>
+
 <h2>Location: <%= @project.location %></h2>
 <h2>Description: <%= @project.description %></h2>
 <h2>Status: <%= @project.status %></h2>
@@ -10,6 +12,10 @@
 
   <form method="get" action='/projects/<%=@project.id%>/edit'>
     <input type="submit" name="edit" id="edit" value="Edit Project">
+  </form>
+
+  <form method="get" action='/projects/<%=@project.id%>/add_comment'>
+    <input type="submit" name="add_comment" id="edit" value="Add Comment">
   </form>
 
   <form method="post" action='/projects/<%=@project.id%>/delete'>
