@@ -1,6 +1,9 @@
 
 <h1><%= @project.name %><h1>
-  <h1><%= @project.user.username unless @project.user_id == current_user.id %><h1>
+
+<% if @project.user_id != current_user.id %>
+  <h1>Created by: <%= @project.user.username %><h1>
+<% end %>
 
 <h2>Location: <%= @project.location %></h2>
 <h2>Description: <%= @project.description %></h2>
