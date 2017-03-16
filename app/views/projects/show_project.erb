@@ -17,9 +17,9 @@
     <input type="submit" name="edit" id="edit" value="Edit Project">
   </form>
 
-  <form method="get" action='/projects/<%=@project.id%>/add_comment'>
+  <!-- <form method="get" action='/projects/<%=@project.id%>/add_comment'>
     <input type="submit" name="add_comment" id="edit" value="Add Comment">
-  </form>
+  </form> -->
 
   <form method="post" action='/projects/<%=@project.id%>/delete'>
     <input id="hidden" type="hidden" name="_method" value="delete">
